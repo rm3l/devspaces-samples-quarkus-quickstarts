@@ -11,7 +11,7 @@ components:
         - name: DEBUG_PORT
           value: "5005"
       endpoints:
-        - exposure: none
+        - exposure: internal
           name: debug
           protocol: tcp
           targetPort: 5005
