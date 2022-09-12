@@ -32,8 +32,8 @@ commands:
   - id: 1-package
     exec:
       component: tools
-      workingDir: ${PROJECTS_ROOT}/quarkus-quickstarts/getting-started
-      commandLine: "mvn package"
+      workingDir: ${PROJECTS_ROOT}/getting-started
+      commandLine: "mvn package -Dmaven.test.skip=true"
       group:
         kind: build
         isDefault: true
@@ -41,7 +41,7 @@ commands:
     exec:
       label: "Start Development mode (Hot reload + debug)"
       component: tools
-      workingDir: ${PROJECTS_ROOT}/quarkus-quickstarts/getting-started
+      workingDir: ${PROJECTS_ROOT}/getting-started
       commandLine: "mvn compile quarkus:dev"
       hotReloadCapable: true
       group:
@@ -51,7 +51,7 @@ commands:
     exec:
       label: "Start debug mode"
       component: tools
-      workingDir: ${PROJECTS_ROOT}/quarkus-quickstarts/getting-started
+      workingDir: ${PROJECTS_ROOT}/getting-started
       commandLine: "mvn compile quarkus:dev -Dquarkus.http.host=${QUARKUS_HTTP_HOST} -Djava.util.logging.manager=org.jboss.logmanager.LogManager -Ddebug=${DEBUG_PORT}"
       hotReloadCapable: true
       group:
