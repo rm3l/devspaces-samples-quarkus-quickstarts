@@ -8,6 +8,8 @@ components:
       env:
         - name: QUARKUS_HTTP_HOST
           value: 0.0.0.0
+        - name: DEBUG_PORT
+          value: "5005"
       endpoints:
         - exposure: none
           name: debug
@@ -41,6 +43,17 @@ commands:
       component: tools
       workingDir: ${PROJECTS_ROOT}/quarkus-quickstarts/getting-started
       commandLine: "mvn compile quarkus:dev"
+      hotReloadCapable: true
       group:
         kind: run
+        isDefault: true
+  - id: 3-startdebug
+    exec:
+      label: "Start debug mode"
+      component: tools
+      workingDir: ${PROJECTS_ROOT}/quarkus-quickstarts/getting-started
+      commandLine: "mvn compile quarkus:dev -Dquarkus.http.host=${QUARKUS_HTTP_HOST} -Djava.util.logging.manager=org.jboss.logmanager.LogManager -Ddebug=${DEBUG_PORT}"
+      hotReloadCapable: true
+      group:
+        kind: debug
         isDefault: true
